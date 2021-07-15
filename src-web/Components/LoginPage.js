@@ -37,6 +37,7 @@ function LoginPage(props) {
                 name="username"
                 label="Username"
                 onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
+                helperText="Username is your email"
             />
             <br />
             <TextField

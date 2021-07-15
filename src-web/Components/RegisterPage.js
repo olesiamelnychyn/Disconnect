@@ -29,7 +29,7 @@ const signup = (registerCredentials, history, setUsedEmail) => {
             if (response.ok) {
                 return response;
             } else {
-                setUsedEmail("Username is alredy used")
+                setUsedEmail("E-mail is alredy used")
                 console.log(response.body)
                 return false;
             }
@@ -53,10 +53,10 @@ const RegisterPage = (props) => {
     return (
         <div>
             <TextField
-                error={checks.username(registerCredentials.username) || usedEmail}
+                error={checks.username(registerCredentials.username) || usedEmail !== ""}
                 id="username"
                 name="username"
-                label="Username"
+                label="E-mail"
                 onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }); setUsedEmail("") }}
                 helperText={usedEmail}
             />

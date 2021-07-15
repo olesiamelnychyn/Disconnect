@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     mode: 'development',
-    entry: './src/App.js',
+    entry: './src-web/App.js',
     output: {
         filename: "bundle.js",
         path: path.join(__dirname, "public")
@@ -23,10 +23,10 @@ module.exports = {
         ]
     },
     resolve: {
-      fallback: {
-        util: require.resolve("util/"),
-        path: require.resolve("path-browserify")
-      }
+        fallback: {
+            util: require.resolve("util/"),
+            path: require.resolve("path-browserify")
+        }
     },
     devServer: {
         historyApiFallback: true,
