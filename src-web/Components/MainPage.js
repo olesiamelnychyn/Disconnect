@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
+import UnauthenticatedRoute from './UnauthenticatedRoute';
+import AuthenticatedRoute from './AuthenticatedRoute';
+import HomePage from './HomePage';
 import {
   Route,
   Switch,
@@ -9,12 +11,14 @@ import {
 } from "react-router-dom"
 
 const MainPage = (props) => {
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
   const { history } = props
   return (
     <div>
       <Switch>
-        <Route history={history} path='/login' component={LoginPage} />
-        <Route history={history} path='/signup' component={RegisterPage} />
+        <UnauthenticatedRoute path='/login' component={LoginPage} appProps={{ userHasAuthenticated }} history={history} />
+        <Route path='/signup' component={RegisterPage} appProps={{ isAuthenticated }} />
+        <AuthenticatedRoute path='/home' component={HomePage} appProps={{ isAuthenticated }} history={history} />
         <Redirect from='/' to='/login' />
       </Switch>
     </div>
