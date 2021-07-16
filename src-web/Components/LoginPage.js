@@ -6,7 +6,7 @@ import { createUrl } from '../utils/queryParam';
 import { Link } from "react-router-dom";
 
 
-function login(loginCredentials, setinvalidInput, history) {
+function login(loginCredentials, setinvalidInput, history, userHasAuthenticated) {
     fetch(createUrl("http://localhost:8081/login", loginCredentials))
         .then(function (response) {
             if (response.ok) {
@@ -17,7 +17,8 @@ function login(loginCredentials, setinvalidInput, history) {
             }
         }).then((result) => {
             if (result) {
-                history.push('/')
+                userHasAuthenticated(true)
+                history.push("/home")
             }
         })
 }
@@ -28,7 +29,8 @@ function LoginPage(props) {
         username: "",
         password: ""
     })
-    const { history } = props
+    console.log(props)
+    const { userHasAuthenticated, history } = props
     return (
         <div className="loginform">
             <TextField
@@ -37,6 +39,7 @@ function LoginPage(props) {
                 name="username"
                 label="Username"
                 onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
+                helperText="Username is your email"
             />
             <br />
             <TextField
@@ -49,7 +52,7 @@ function LoginPage(props) {
                 onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
             />
             <br />
-            <Button variant="contained" color="primary" onClick={() => login(loginCredentials, setinvalidInput, history)}>Log In</Button>
+            <Button variant="contained" color="primary" onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
             <br />
             <Link to={"/signup"} style={{ textDecoration: 'none' }}>
                 <Button variant="contained" color="secondary" >Sign up</Button>
