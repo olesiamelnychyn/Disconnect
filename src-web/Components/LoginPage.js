@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
-import './Login.css';
+import './LoginPage.css';
 import { Button } from '@material-ui/core';
 import { createUrl } from '../utils/queryParam';
 import { Link } from "react-router-dom";
-
+import UserPanelItem from "./UserPanelItem";
 
 function login(loginCredentials, setinvalidInput, history, userHasAuthenticated) {
     fetch(createUrl("http://localhost:8081/login", loginCredentials))
@@ -57,6 +57,9 @@ function LoginPage(props) {
             <Link to={"/signup"} style={{ textDecoration: 'none' }}>
                 <Button variant="contained" color="secondary" >Sign up</Button>
             </Link>
+            <br />
+            <UserPanelItem firstName="Huga" lastName="Melnychynova" active={true}/>
+
         </div >
     )
 }

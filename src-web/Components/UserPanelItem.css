@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+
+.userPanelWrapper {
+    border: 2px solid #9a8c98;
+    border-radius: 50px;
+    padding: 5px 13px 5px 10px;
+    margin: 10px;
+    display: flex;
+}
+
+.userIcon {
+    height: 40px;
+    width: 40px;
+    background-color: #22223b;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #f2e9e4;
+}
+
+.userName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.userStatusIndicator {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+
+
