@@ -4,6 +4,7 @@ import './LoginPage.css';
 import { Button } from '@material-ui/core';
 import { createUrl } from '../utils/queryParam';
 import { Link } from "react-router-dom";
+import logo from '../../public/assets/small_logo_disconnect.png';
 import UserPanelItem from "./UserPanelItem";
 
 function login(loginCredentials, setinvalidInput, history, userHasAuthenticated) {
@@ -32,35 +33,44 @@ function LoginPage(props) {
     console.log(props)
     const { userHasAuthenticated, history } = props
     return (
-        <div className="loginform">
-            <TextField
-                error={invalidInput}
-                id="username"
-                name="username"
-                label="Username"
-                onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
-                helperText="Username is your email"
-            />
-            <br />
-            <TextField
-                error={invalidInput}
-                id="password"
-                name="password"
-                label="Password"
-                type="password"
-                autoComplete="current-password"
-                onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
-            />
-            <br />
-            <Button variant="contained" color="primary" onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
-            <br />
-            <Link to={"/signup"} style={{ textDecoration: 'none' }}>
-                <Button variant="contained" color="secondary" >Sign up</Button>
-            </Link>
-            <br />
-            <UserPanelItem firstName="Huga" lastName="Melnychynova" active={true}/>
+        <div>
+            {/* <img src={logo} alt="logo_disconnect"/> */}
+            <h2>Wouldn't it be great to know everyone? <br /></h2>
+            <div className="loginInputWrapper">
+                <div className="loginform">
+                    <TextField
+                        error={invalidInput}
+                        id="username"
+                        name="username"
+                        label="Email"
+                        onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
+                        helperText="Email is your username"
+                    />
+                    <br />
+                    <TextField
+                        error={invalidInput}
+                        id="password"
+                        name="password"
+                        label="Password"
+                        type="password"
+                        autoComplete="current-password"
+                        onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
+                    />
+                    <div className="buttons">
+                        <Button variant="contained" color="primary" style={{width:"120px"}} onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
+                        <p>Don't have an account yet?</p>
+                        <Link to={"/signup"} style={{ textDecoration: 'none' }}>
+                            <Button variant="contained" color="secondary" >Sign up</Button>
+                        </Link>
+                    </div>
 
-        </div >
+                    {/* <UserPanelItem firstName="Huga" lastName="Melnychynova" active={true}/> */}
+
+                </div >
+            </div>
+            
+        </div>
+        
     )
 }
 
