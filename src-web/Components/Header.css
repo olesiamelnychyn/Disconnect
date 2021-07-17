@@ -1,0 +1,11 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    display: flex;
+    background: #22223b;
+    justify-content: space-between;
+
+}

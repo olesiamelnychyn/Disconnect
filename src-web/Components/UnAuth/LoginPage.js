@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import './LoginPage.css';
 import { Button } from '@material-ui/core';
-import { createUrl } from '../utils/queryParam';
+import { createUrl } from '../../utils/queryParam';
 import { Link } from "react-router-dom";
-import logo from '../../public/assets/small_logo_disconnect.png';
-import UserPanelItem from "./UserPanelItem";
+import Cookies from 'js-cookie';
 
 function login(loginCredentials, setinvalidInput, history, userHasAuthenticated) {
     fetch(createUrl("http://localhost:8081/login", loginCredentials))
@@ -19,6 +18,7 @@ function login(loginCredentials, setinvalidInput, history, userHasAuthenticated)
         }).then((result) => {
             if (result) {
                 userHasAuthenticated(true)
+                Cookies.set("user","loginTrue");
                 history.push("/home")
             }
         })
@@ -34,7 +34,6 @@ function LoginPage(props) {
     const { userHasAuthenticated, history } = props
     return (
         <div>
-            {/* <img src={logo} alt="logo_disconnect"/> */}
             <h2>Wouldn't it be great to know everyone? <br /></h2>
             <div className="loginInputWrapper">
                 <div className="loginform">

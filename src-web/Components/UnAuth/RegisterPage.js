@@ -7,12 +7,12 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import FormLabel from '@material-ui/core/FormLabel';
-import { createUrl } from '../utils/queryParam';
+import { createUrl } from '../../utils/queryParam';
 import './RegisterPage.css'
 
 const checks = {
     username: (value) => !/\S+@\S+\.\S+/.test(value),
-    firstname: (value) => !/^[A-Za-z]{5,}$/i.test(value),
+    firstname: (value) => !/^[A-Za-z]{3,}$/i.test(value),
     familyname: (value) => !/^[A-Za-z]{2,}$/i.test(value),
     password: (value) => !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)
 }

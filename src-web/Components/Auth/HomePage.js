@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const MainPage = (props) => {
+const HomePage = (props) => {
     return (
         <div>
             hello
@@ -8,4 +8,4 @@ const MainPage = (props) => {
     )
 }
 
-export default MainPage;
+export default HomePage;
