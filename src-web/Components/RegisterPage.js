@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import FormLabel from '@material-ui/core/FormLabel';
 import { createUrl } from '../utils/queryParam';
+import './RegisterPage.css'
 
 const checks = {
     username: (value) => !/\S+@\S+\.\S+/.test(value),
@@ -52,57 +53,64 @@ const RegisterPage = (props) => {
     const { history } = props
     return (
         <div>
-            <TextField
-                error={checks.username(registerCredentials.username) || usedEmail !== ""}
-                id="username"
-                name="username"
-                label="E-mail"
-                onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }); setUsedEmail("") }}
-                helperText={usedEmail}
-            />
-            <br />
-            <TextField
-                error={checks.firstname(registerCredentials.firstname)}
-                id="firstname"
-                name="firstname"
-                label="First Name"
-                onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }} />
-            <br />
-            <TextField
-                error={checks.familyname(registerCredentials.familyname)}
-                id="familyname"
-                name="familyname"
-                label="Family Name"
-                onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
-            />
-            <br />
-            <br />
-            <FormControl component="fieldset">
-                <FormLabel component="legend">Gender</FormLabel>
-                <RadioGroup aria-label="gender" name="gender" value={registerCredentials.gender} onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}>
-                    <FormControlLabel name="gender" value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel name="gender" value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel name="gender" value="other" control={<Radio />} label="Other" />
-                </RadioGroup>
-            </FormControl>
-            <br />
-            <br />
-            <TextField
-                error={checks.password(registerCredentials.password)}
-                id="password"
-                name="password"
-                label="Password"
-                type="password"
-                helperText="Password should consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
-                autoComplete="current-password"
-                onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
-            />
-            <br />
-            <br />
-            <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail) }}> Sign up </Button>
-            <Link to={"/login"} style={{ textDecoration: 'none' }}>
-                <Button variant="contained" color="secondary" > Back to Log In </Button>
-            </Link>
+                <h2>Fill in the information to register</h2>
+            <div className="regiterPageWrapper">
+                <TextField
+                    error={checks.username(registerCredentials.username) || usedEmail !== ""}
+                    id="username"
+                    name="username"
+                    label="E-mail"
+                    onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }); setUsedEmail("") }}
+                    helperText={usedEmail}
+                />
+                <br />
+                <TextField
+                    error={checks.firstname(registerCredentials.firstname)}
+                    id="firstname"
+                    name="firstname"
+                    label="First Name"
+                    style={{marginTop:"8px"}}
+                    onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }} />
+                <br />
+                <TextField
+                    error={checks.familyname(registerCredentials.familyname)}
+                    id="familyname"
+                    name="familyname"
+                    label="Family Name"
+                    style={{marginTop:"8px"}}
+                    onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
+                />
+                <br />
+                <br />
+                <FormControl component="fieldset">
+                    <FormLabel component="legend">Gender</FormLabel>
+                    <RadioGroup aria-label="gender" name="gender" value={registerCredentials.gender} onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}>
+                        <FormControlLabel name="gender" value="male" control={<Radio />} label="Male" />
+                        <FormControlLabel name="gender" value="female" control={<Radio />} label="Female" />
+                        <FormControlLabel name="gender" value="other" control={<Radio />} label="Other" />
+                    </RadioGroup>
+                </FormControl>
+                <br />
+                <br />
+                <TextField
+                    error={checks.password(registerCredentials.password)}
+                    id="password"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    helperText="Password should consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
+                    autoComplete="current-password"
+                    onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
+                />
+                <br />
+                <br />
+                <div className="buttons">
+                    <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail) }}> Sign up </Button>
+                    <Link to={"/login"} style={{ textDecoration: 'none' }}>
+                        <Button variant="contained"  style={{marginTop:"8px"}} > Back to Log In </Button>
+                    </Link>
+                </div>
+            </div>
         </div>
     )
 }

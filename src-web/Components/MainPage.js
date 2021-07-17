@@ -3,6 +3,9 @@ import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import UnauthenticatedRoute from './UnauthenticatedRoute';
 import AuthenticatedRoute from './AuthenticatedRoute';
+import logo from '../../public/assets/small_logo_disconnect.png';
+import './MainPage.css';
+
 import HomePage from './HomePage';
 import {
   Route,
@@ -15,6 +18,8 @@ const MainPage = (props) => {
   const { history } = props
   return (
     <div>
+      <img src={logo} alt="logo_disconnect"/>
+
       <Switch>
         <UnauthenticatedRoute path='/login' component={LoginPage} appProps={{ userHasAuthenticated }} history={history} />
         <Route path='/signup' component={RegisterPage} appProps={{ isAuthenticated }} />
