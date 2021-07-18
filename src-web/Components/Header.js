@@ -16,7 +16,7 @@ const Header = (props) => {
 
             <img src={logo} alt='logo_disconnect'/>
             { props.isAuthenticated && 
-            <a onClick={()=>{logout(props.userHasAuthenticated)}}>LOG OUT</a>
+            <a className="logoutButton" onClick={()=>{logout(props.userHasAuthenticated)}}>LOG OUT</a>
             }
         </div>
     )

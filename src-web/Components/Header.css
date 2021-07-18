@@ -7,7 +7,7 @@ img {
     width: 230px;
 }
 
-a {
+.logoutButton {
     display: flex;
     align-items: center;
     color: white;
@@ -22,7 +22,7 @@ a {
     transition: 0.5s;
 }
 
-a:hover {
+.logoutButton:hover {
     background-color: #4a4e69;
 }
 
