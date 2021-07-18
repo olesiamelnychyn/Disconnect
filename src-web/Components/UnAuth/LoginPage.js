@@ -62,9 +62,6 @@ function LoginPage(props) {
                             <Button variant="contained" color="secondary" >Sign up</Button>
                         </Link>
                     </div>
-
-                    {/* <UserPanelItem firstName="Huga" lastName="Melnychynova" active={true}/> */}
-
                 </div >
             </div>
             

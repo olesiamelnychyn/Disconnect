@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import logo from '../../public/assets/small_logo_disconnect_white.svg';
 import Cookies from 'js-cookie';
 import './Header.css';
-import { Button } from '@material-ui/core';
 
 
 const logout= (userHasAuthenticated) =>{

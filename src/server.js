@@ -76,7 +76,29 @@ app.get('/signup', (request, response) => {
     from: `"Disconnect" <DisconnectSocialApp@gmail.com>`,
     to: request.query.username,
     subject: "Please confirm your Email account",
-    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+    html: `<img style="width: 120px;" src="./small_logo_disconnect.png" alt="logo">
+
+    <p style="width: 400px; margin-bottom: 25px;">
+        Hello ` + request.query.firstname + `, <br> <br>
+        We are glad you want to join Disconnect. Please, <b>click the button below</b> to verify your email.
+
+    </p> 
+     
+    <a style="padding:0.6em 1.2em;
+    margin-left: 5px;
+    border-radius: 3em;
+    font-size: 14px;
+    font-weight:550;
+    color:#FFFFFF;
+    text-decoration: none;
+    background-color:#1c75a8;
+    text-align:center;" href=` + link + `>Verify Now</a>
+
+    <P style="margin-top: 25px; line-height: 22px;">Welcome to Disconnect!<br>
+        The Disconnect Team
+    </P>
+    
+    <p style="width: 400px; margin-top: 25px; font-size: 14px;">If you have not signed up, ignore this email. This verification link will expire in 1 hour.</p>`
   }
 
   smtpTransport.sendMail(mailOptions, function (error, res) {
