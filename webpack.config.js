@@ -40,5 +40,6 @@ module.exports = {
         contentBase: './',
         hot: true,
         contentBase: path.join(__dirname, 'public')
-    }
+    },
+
 }
