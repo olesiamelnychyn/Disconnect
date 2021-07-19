@@ -18,7 +18,7 @@ const checks = {
 }
 
 
-const signup = (registerCredentials, history, setUsedEmail, setSucessfullRegistration) => {
+const signup = (registerCredentials, history, setUsedEmail, setSucessfulRegistration) => {
     for (const [key, value] of Object.entries(registerCredentials)) {
         if (key != "gender" && checks[key](value)) {
             alert("wrong input");
@@ -28,7 +28,7 @@ const signup = (registerCredentials, history, setUsedEmail, setSucessfullRegistr
     fetch(createUrl("http://localhost:8081/signup", registerCredentials))
         .then(function (response) {
             if (response.ok) {
-                setSucessfullRegistration(true);
+                setSucessfulRegistration(true);
                 return response;
             } else {
                 setUsedEmail("E-mail is alredy used")
@@ -54,13 +54,13 @@ const RegisterPage = (props) => {
     })
 
     const [usedEmail, setUsedEmail] = useState("")
-    const [sucessfullRegistration, setSucessfullRegistration] = useState(false)
+    const [sucessfulRegistration, setSucessfulRegistration] = useState(false)
     const { history } = props
     return (
         <div>
-            <h2 className="topTitle" id="topTitle">{!sucessfullRegistration ? "Fill in the information to register" : "Your verification email was sent. You will now be redirected to login page."}</h2>
+            <h2 className="topTitle" id="topTitle">{!sucessfulRegistration ? "Fill in the information to register" : "Your verification email was sent. You will now be redirected to login page."}</h2>
 
-            {!sucessfullRegistration &&
+            {!sucessfulRegistration &&
                 <div>
                     <div className="regiterPageWrapper" id="regiterPageWrapper">
                         <TextField
@@ -114,7 +114,7 @@ const RegisterPage = (props) => {
                         <br />
                         <br />
                         <div className="buttons">
-                            <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail, setSucessfullRegistration) }}> Sign up </Button>
+                            <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail, setSucessfulRegistration) }}> Sign up </Button>
                             <Link to={"/login"} style={{ textDecoration: 'none' }}>
                                 <Button variant="contained" style={{ marginTop: "8px" }}> Back to Log In </Button>
                             </Link>
