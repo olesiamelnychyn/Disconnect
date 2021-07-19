@@ -4,18 +4,25 @@ import Cookies from 'js-cookie';
 import './Header.css';
 
 
-const logout= (userHasAuthenticated) =>{
+const logout = (userHasAuthenticated) => {
     Cookies.remove("user");
     userHasAuthenticated(false)
 }
 
 const Header = (props) => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (!darkThemeMq.matches) {
+
+        document.getElementById("favi").href = "./assets/logo_disconnect.ico"
+    } else {
+        document.getElementById("favi").href = "./assets/logo_disconnect-black.ico"
+    }
     return (
         <div className="header">
 
-            <img src={logo} alt='logo_disconnect'/>
-            { props.isAuthenticated && 
-            <a className="logoutButton" onClick={()=>{logout(props.userHasAuthenticated)}}>LOG OUT</a>
+            <img src={logo} alt='logo_disconnect' />
+            {props.isAuthenticated &&
+                <a className="logoutButton" onClick={() => { logout(props.userHasAuthenticated) }}>LOG OUT</a>
             }
         </div>
     )
