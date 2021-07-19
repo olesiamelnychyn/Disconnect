@@ -134,6 +134,13 @@ app.get('/verify', function (request, response) {
   }
 });
 
+app.get('/users', (request, response) => {
+
+  response.setHeader("Access-Control-Allow-Origin", "*")
+  console.log(JSON.stringify(active_users))
+  response.status(200).send(JSON.stringify(active_users))
+});
+
 app.listen(8081, () => {
   console.log(chalk.blueBright("\n****************************************************************************************************************"))
   console.log("Server is starting...");
