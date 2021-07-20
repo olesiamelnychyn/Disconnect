@@ -13,11 +13,13 @@ const UserPanel = (props) => {
     }, []);
     return (
         <div>
-            {Object.keys(users).map((key, value) => {
-                return (<div key={key}>
-                    <UserPanelItem firstName={key} lastName={users[key]["password"]} active={false} />
-                </div>)
-            })
+            {
+                Object.keys(users).map((username) => {
+                    return (
+                        <div key={username}>
+                            <UserPanelItem firstName={users[username].firstName} lastName={users[username].lastName} active={false} />
+                        </div>)
+                })
             }
         </div>
     )

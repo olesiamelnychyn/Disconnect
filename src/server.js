@@ -66,6 +66,8 @@ app.get('/signup', (request, response) => {
   unverifiedUsers[request.query.username] = {
     id: Math.floor((Math.random() * 100) + 54),
     active_time: 0,
+    lastName: request.query.lastName,
+    firstName: request.query.firstName,
     password: request.query.password,
   }
 
@@ -79,7 +81,7 @@ app.get('/signup', (request, response) => {
     html: `<img style="width: 120px;" src="./small_logo_disconnect.png" alt="logo">
 
     <p style="width: 400px; margin-bottom: 25px;">
-        Hello ` + request.query.firstname + `, <br> <br>
+        Hello ` + request.query.firstName + `, <br> <br>
         We are glad you want to join Disconnect. Please, <b>click the button below</b> to verify your email.
 
     </p> 
@@ -116,7 +118,7 @@ app.get('/verify', function (request, response) {
       console.log("Email " + chalk.green(request.query.username) + " is verified");
       response.end("<h1>Email " + request.query.username + " is successfully verified<h1>");
 
-      dbHandler.insertUser(request.query.username,
+      dbHandler.insertUser(request.query.username, unverifiedUsers[request.query.username].firstName, unverifiedUsers[request.query.username].lastName,
         unverifiedUsers[request.query.username].password,
         (users) => {
           active_users = users;
@@ -137,8 +139,11 @@ app.get('/verify', function (request, response) {
 app.get('/users', (request, response) => {
 
   response.setHeader("Access-Control-Allow-Origin", "*")
-  console.log(JSON.stringify(active_users))
-  response.status(200).send(JSON.stringify(active_users))
+  let users = { ...active_users }
+  Object.keys(users).map(key => {
+    delete users[key]["password"]
+  })
+  response.status(200).send(JSON.stringify(users))
 });
 
 app.listen(8081, () => {

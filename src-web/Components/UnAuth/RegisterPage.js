@@ -12,8 +12,8 @@ import './RegisterPage.css'
 
 const checks = {
     username: (value) => !/\S+@\S+\.\S+/.test(value),
-    firstname: (value) => !/^[A-Za-z]{3,}$/i.test(value),
-    familyname: (value) => !/^[A-Za-z]{2,}$/i.test(value),
+    firstName: (value) => !/^[A-Za-z]{3,}$/i.test(value),
+    lastName: (value) => !/^[A-Za-z]{2,}$/i.test(value),
     password: (value) => !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(value)
 }
 
@@ -47,8 +47,8 @@ const signup = (registerCredentials, history, setUsedEmail, setSucessfulRegistra
 const RegisterPage = (props) => {
     const [registerCredentials, setRegisterCredentials] = useState({
         username: "",
-        firstname: "",
-        familyname: "",
+        firstName: "",
+        lastName: "",
         password: "",
         gender: "male",
     })
@@ -74,18 +74,18 @@ const RegisterPage = (props) => {
                         />
                         <br />
                         <TextField
-                            error={checks.firstname(registerCredentials.firstname)}
-                            id="firstname"
-                            name="firstname"
+                            error={checks.firstName(registerCredentials.firstName)}
+                            id="firstName"
+                            name="firstName"
                             label="First Name"
                             style={{ marginTop: "8px", width: "100%" }}
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }} />
                         <br />
                         <TextField
-                            error={checks.familyname(registerCredentials.familyname)}
-                            id="familyname"
-                            name="familyname"
-                            label="Family Name"
+                            error={checks.lastName(registerCredentials.lastName)}
+                            id="lastName"
+                            name="lastName"
+                            label="Last Name"
                             style={{ marginTop: "8px", width: "100%" }}
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
                         />
