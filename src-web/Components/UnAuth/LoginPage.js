@@ -18,7 +18,7 @@ function login(loginCredentials, setinvalidInput, history, userHasAuthenticated)
         }).then((result) => {
             if (result) {
                 userHasAuthenticated(true)
-                Cookies.set("user","loginTrue");
+                Cookies.set("user", loginCredentials.username);
                 history.push("/home")
             }
         })
@@ -56,7 +56,7 @@ function LoginPage(props) {
                         onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
                     />
                     <div className="buttons">
-                        <Button variant="contained" color="primary" style={{width:"120px"}} onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
+                        <Button variant="contained" color="primary" style={{ width: "120px" }} onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
                         <p>Don't have an account yet?</p>
                         <Link to={"/signup"} style={{ textDecoration: 'none' }}>
                             <Button variant="contained" color="secondary" >Sign up</Button>
@@ -64,9 +64,9 @@ function LoginPage(props) {
                     </div>
                 </div >
             </div>
-            
+
         </div>
-        
+
     )
 }
 

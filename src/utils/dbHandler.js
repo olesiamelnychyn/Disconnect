@@ -14,7 +14,8 @@ const users = {
   insert: (username, firstName, lastName, password) => {
     return "INSERT INTO users (username, firstName, lastName, password) VALUES (\'" + username + "\',\'" + firstName + "\',\'" + lastName + "\',\'" + password + "\');";
   },
-  selectAll: 'SELECT * FROM users'
+  selectAll: 'SELECT * FROM users',
+  deleteUser: (username) => { return "DELETE FROM users WHERE username=\'" + username + "\';" }
 }
 
 // connection.query(users.drop, function (error, result) {
@@ -41,6 +42,14 @@ function insertUser(username, firstName, lastName, password, callback) {
   });
 }
 
+function deleteUser(username, callback) {
+  connection.query(users.deleteUser(username), function (error, result) {
+    if (error) throw error
+    console.log(result)
+    getUsers(callback)
+  });
+}
+
 function getUsers(callback) {
   connection.query(users.selectAll, function (error, result) {
     if (error) throw error
@@ -58,3 +67,4 @@ function getUsers(callback) {
 
 module.exports.insertUser = insertUser
 module.exports.getUsers = getUsers
+module.exports.deleteUser = deleteUser

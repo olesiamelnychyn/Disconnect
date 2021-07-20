@@ -146,6 +146,19 @@ app.get('/users', (request, response) => {
   response.status(200).send(JSON.stringify(users))
 });
 
+app.get('/delete', (request, response) => {
+
+  response.setHeader("Access-Control-Allow-Origin", "*")
+  dbHandler.deleteUser(request.query.username,
+    (users) => {
+      active_users = users;
+      printUsers();
+    });
+  console.log("User " + chalk.green(request.query.username) + " is succesfully deleted");
+  response.status(200).send("deleted");
+
+});
+
 app.listen(8081, () => {
   console.log(chalk.blueBright("\n****************************************************************************************************************"))
   console.log("Server is starting...");
