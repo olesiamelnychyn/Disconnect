@@ -18,6 +18,13 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file-loader',
+                options: {
+                  name: '[path][name].[hash].[ext]',
+                },
             }
 
         ]
@@ -33,5 +40,6 @@ module.exports = {
         contentBase: './',
         hot: true,
         contentBase: path.join(__dirname, 'public')
-    }
+    },
+
 }

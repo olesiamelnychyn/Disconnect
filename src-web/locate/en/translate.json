@@ -1,0 +1,46 @@
+{
+    "translations": {
+        "common": {
+            "language": "sk"
+        },
+        "UnAuth": {
+            "common": {
+                "email": "E-mail",
+                "signUp": "Sign Up",
+                "logIn": "Log In",
+                "password": "Password"
+            },
+            "logIn": {
+                "motive": "Wouldn't it be great to know everyone?",
+                "usernameMessage": "Email is your username",
+                "toSignUp": "Don't have an account yet?"
+            },
+            "signUp": {
+                "verification": "Your verification email was sent. You will now be redirected to login page.",
+                "tip": "Fill in the information to register",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "gender": {
+                    "gender": "Gender",
+                    "male": "Male",
+                    "female": "Female",
+                    "other": "Other"
+                },
+                "back": "Back To Log In",
+                "passwordMessage": "Password should consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
+            }
+        },
+        "Auth": {
+            "home": {
+                "header": {
+                    "settings": "Settings",
+                    "logOut": "Log Out"
+                },
+                "settings": {
+                    "delete": "Delete Account",
+                    "back": "Back to Home"
+                }
+            }
+        }
+    }
+}

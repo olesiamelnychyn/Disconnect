@@ -1,0 +1,27 @@
+.users {
+    background-color: green;
+    grid-area: users;
+    height: 500px;
+}
+
+.main-content {
+    background-color: red;
+    grid-area: main-content;
+}
+
+.other {
+    background-color: blue;
+    height: 100%;
+    grid-area: other;
+    height: 250px;
+}
+
+.homePageWrapper {
+    display: grid;
+    grid-template-areas: "users main-content other";
+    grid-template-columns: 25% 50% 25%;
+
+    /* grid-template-rows: auto; */
+
+    gap: 0 10px;
+}

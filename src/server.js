@@ -66,6 +66,8 @@ app.get('/signup', (request, response) => {
   unverifiedUsers[request.query.username] = {
     id: Math.floor((Math.random() * 100) + 54),
     active_time: 0,
+    lastName: request.query.lastName,
+    firstName: request.query.firstName,
     password: request.query.password,
   }
 
@@ -76,7 +78,29 @@ app.get('/signup', (request, response) => {
     from: `"Disconnect" <DisconnectSocialApp@gmail.com>`,
     to: request.query.username,
     subject: "Please confirm your Email account",
-    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+    html: `<img style="width: 120px;" src="./small_logo_disconnect.png" alt="logo">
+
+    <p style="width: 400px; margin-bottom: 25px;">
+        Hello ` + request.query.firstName + `, <br> <br>
+        We are glad you want to join Disconnect. Please, <b>click the button below</b> to verify your email.
+
+    </p> 
+     
+    <a style="padding:0.6em 1.2em;
+    margin-left: 5px;
+    border-radius: 3em;
+    font-size: 14px;
+    font-weight:550;
+    color:#FFFFFF;
+    text-decoration: none;
+    background-color:#1c75a8;
+    text-align:center;" href=` + link + `>Verify Now</a>
+
+    <P style="margin-top: 25px; line-height: 22px;">Welcome to Disconnect!<br>
+        The Disconnect Team
+    </P>
+    
+    <p style="width: 400px; margin-top: 25px; font-size: 14px;">If you have not signed up, ignore this email. This verification link will expire in 1 hour.</p>`
   }
 
   smtpTransport.sendMail(mailOptions, function (error, res) {
@@ -94,7 +118,7 @@ app.get('/verify', function (request, response) {
       console.log("Email " + chalk.green(request.query.username) + " is verified");
       response.end("<h1>Email " + request.query.username + " is successfully verified<h1>");
 
-      dbHandler.insertUser(request.query.username,
+      dbHandler.insertUser(request.query.username, unverifiedUsers[request.query.username].firstName, unverifiedUsers[request.query.username].lastName,
         unverifiedUsers[request.query.username].password,
         (users) => {
           active_users = users;
@@ -110,6 +134,29 @@ app.get('/verify', function (request, response) {
   } else {
     response.end("<h1>Request is from unknown source<h1>");
   }
+});
+
+app.get('/users', (request, response) => {
+
+  response.setHeader("Access-Control-Allow-Origin", "*")
+  let users = { ...active_users }
+  Object.keys(users).map(key => {
+    delete users[key]["password"]
+  })
+  response.status(200).send(JSON.stringify(users))
+});
+
+app.get('/delete', (request, response) => {
+
+  response.setHeader("Access-Control-Allow-Origin", "*")
+  dbHandler.deleteUser(request.query.username,
+    (users) => {
+      active_users = users;
+      printUsers();
+    });
+  console.log("User " + chalk.green(request.query.username) + " is succesfully deleted");
+  response.status(200).send("deleted");
+
 });
 
 app.listen(8081, () => {

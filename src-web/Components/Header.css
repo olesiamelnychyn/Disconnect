@@ -1,0 +1,35 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    width: 230px;
+}
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 20px 40px;
+    transition: 0.5s;
+}
+
+.logoutButton:hover {
+    background-color: #4a4e69;
+}
+
+.header{
+    display: flex;
+    background: #22223b;
+    justify-content: space-between;
+    height: 85px;
+    margin-bottom: 20px;
+}
