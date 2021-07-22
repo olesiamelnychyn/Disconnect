@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import FormLabel from '@material-ui/core/FormLabel';
 import { createUrl } from '../../utils/queryParam';
+import { useTranslation } from 'react-i18next';
 import './RegisterPage.css'
 
 const checks = {
@@ -56,9 +57,11 @@ const RegisterPage = (props) => {
     const [usedEmail, setUsedEmail] = useState("")
     const [sucessfulRegistration, setSucessfulRegistration] = useState(false)
     const { history } = props
+    const { t, i18n } = useTranslation();
+
     return (
         <div>
-            <h2 className="topTitle" id="topTitle">{!sucessfulRegistration ? "Fill in the information to register" : "Your verification email was sent. You will now be redirected to login page."}</h2>
+            <h2 className="topTitle" id="topTitle">{!sucessfulRegistration ? t('UnAuth.signUp.tip') : t('UnAuth.signUp.verification')}</h2>
 
             {!sucessfulRegistration &&
                 <div>
@@ -67,7 +70,7 @@ const RegisterPage = (props) => {
                             error={checks.username(registerCredentials.username) || usedEmail !== ""}
                             id="username"
                             name="username"
-                            label="E-mail"
+                            label={t('UnAuth.common.email')}
                             style={{ width: "100%" }}
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }); setUsedEmail("") }}
                             helperText={usedEmail}
@@ -77,7 +80,7 @@ const RegisterPage = (props) => {
                             error={checks.firstName(registerCredentials.firstName)}
                             id="firstName"
                             name="firstName"
-                            label="First Name"
+                            label={t('UnAuth.signUp.firstName')}
                             style={{ marginTop: "8px", width: "100%" }}
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }} />
                         <br />
@@ -85,18 +88,18 @@ const RegisterPage = (props) => {
                             error={checks.lastName(registerCredentials.lastName)}
                             id="lastName"
                             name="lastName"
-                            label="Last Name"
+                            label={t('UnAuth.signUp.lastName')}
                             style={{ marginTop: "8px", width: "100%" }}
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
                         />
                         <br />
                         <br />
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">Gender</FormLabel>
+                            <FormLabel component="legend">{t('UnAuth.signUp.gender.gender')}</FormLabel>
                             <RadioGroup aria-label="gender" name="gender" value={registerCredentials.gender} onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}>
-                                <FormControlLabel name="gender" value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel name="gender" value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel name="gender" value="other" control={<Radio />} label="Other" />
+                                <FormControlLabel name="gender" value="male" control={<Radio />} label={t('UnAuth.signUp.gender.male')} />
+                                <FormControlLabel name="gender" value="female" control={<Radio />} label={t('UnAuth.signUp.gender.female')} />
+                                <FormControlLabel name="gender" value="other" control={<Radio />} label={t('UnAuth.signUp.gender.other')} />
                             </RadioGroup>
                         </FormControl>
                         <br />
@@ -105,18 +108,18 @@ const RegisterPage = (props) => {
                             error={checks.password(registerCredentials.password)}
                             id="password"
                             name="password"
-                            label="Password"
+                            label={t('UnAuth.common.password')}
                             type="password"
-                            helperText="Password should consist of minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
+                            helperText={t('UnAuth.signUp.passwordMessage')}
                             autoComplete="current-password"
                             onChange={(event) => { setRegisterCredentials({ ...registerCredentials, [event.target.name]: event.target.value }) }}
                         />
                         <br />
                         <br />
                         <div className="buttons">
-                            <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail, setSucessfulRegistration) }}> Sign up </Button>
+                            <Button variant="contained" color="primary" onClick={() => { signup(registerCredentials, history, setUsedEmail, setSucessfulRegistration) }}> {t('UnAuth.common.signUp')} </Button>
                             <Link to={"/login"} style={{ textDecoration: 'none' }}>
-                                <Button variant="contained" style={{ marginTop: "8px" }}> Back to Log In </Button>
+                                <Button variant="contained" style={{ marginTop: "8px" }}> {t('UnAuth.signUp.back')} </Button>
                             </Link>
                         </div>
                     </div>

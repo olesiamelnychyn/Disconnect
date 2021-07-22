@@ -5,13 +5,13 @@ import UnauthenticatedRoute from './UnAuth/UnauthenticatedRoute';
 import AuthenticatedRoute from './Auth/AuthenticatedRoute';
 import AccountSettings from './Auth/AccountSettings';
 import Header from './Header';
+import { withTranslation } from 'react-i18next'
 
 import './MainPage.css';
 import Cookies from 'js-cookie'
 
 import HomePage from './Auth/HomePage';
 import {
-  Route,
   Switch,
   Redirect,
 } from "react-router-dom"
@@ -43,4 +43,4 @@ const Routes = (props) => {
   )
 }
 
-export default Routes;
+export default withTranslation()(Routes);

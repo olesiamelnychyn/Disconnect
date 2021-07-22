@@ -4,6 +4,7 @@ import './LoginPage.css';
 import { Button } from '@material-ui/core';
 import { createUrl } from '../../utils/queryParam';
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie';
 
 function login(loginCredentials, setinvalidInput, history, userHasAuthenticated) {
@@ -32,40 +33,42 @@ function LoginPage(props) {
     })
     console.log(props)
     const { userHasAuthenticated, history } = props
+
+    const { t, i18n } = useTranslation();
     return (
         <div>
-            <h2>Wouldn't it be great to know everyone? <br /></h2>
+            <h2>{t('UnAuth.logIn.motive')}<br /></h2>
             <div className="loginInputWrapper">
                 <div className="loginform">
                     <TextField
                         error={invalidInput}
                         id="username"
                         name="username"
-                        label="Email"
+                        label={t('UnAuth.common.email')}
                         onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
-                        helperText="Email is your username"
+                        helperText={t('UnAuth.logIn.usernameMessage')}
                     />
                     <br />
                     <TextField
                         error={invalidInput}
                         id="password"
                         name="password"
-                        label="Password"
+                        label={t('UnAuth.common.password')}
                         type="password"
                         autoComplete="current-password"
                         onChange={(event) => setLoginCredentials({ ...loginCredentials, [event.target.name]: event.target.value })}
                     />
                     <div className="buttons">
-                        <Button variant="contained" color="primary" style={{ width: "120px" }} onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>Log In</Button>
-                        <p>Don't have an account yet?</p>
+                        <Button variant="contained" color="primary" style={{ minWidth: "120px" }} onClick={() => login(loginCredentials, setinvalidInput, history, userHasAuthenticated)}>{t('UnAuth.common.logIn')}</Button>
+                        <p>{t('UnAuth.logIn.toSignUp')}</p>
                         <Link to={"/signup"} style={{ textDecoration: 'none' }}>
-                            <Button variant="contained" color="secondary" >Sign up</Button>
+                            <Button variant="contained" color="secondary" >{t('UnAuth.common.signUp')}</Button>
                         </Link>
                     </div>
                 </div >
             </div>
 
-        </div>
+        </div >
 
     )
 }

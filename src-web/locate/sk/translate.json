@@ -1,0 +1,46 @@
+{
+    "translations": {
+        "common": {
+            "language": "en"
+        },
+        "UnAuth": {
+            "common": {
+                "email": "E-mail",
+                "signUp": "Registrovať sa",
+                "logIn": "Prihlásiť sa",
+                "password": "Heslo"
+            },
+            "logIn": {
+                "motive": "Nebolo by super poznat vsetkych?",
+                "usernameMessage": "E-mail je username",
+                "toSignUp": "Nemas ucet?"
+            },
+            "signUp": {
+                "verification": "Vas verifikacny email bol odoslany. Teraz budete presmerovane na prihlasovaciu stranku.",
+                "tip": "Vypln udaje pre registraciu",
+                "firstName": "Meno",
+                "lastName": "Priezvisko",
+                "gender": {
+                    "gender": "Pohlavie",
+                    "male": "Muz",
+                    "female": "Zena",
+                    "other": "Ine"
+                },
+                "back": "Spat na prihlasovanie",
+                "passwordMessage": "Heslo musi obsahovat minimalne osem znakov, aspon jedne jedne belke pismeno, jedne male pismeno, jedne cislo a jeden specialny znak"
+            }
+        },
+        "Auth": {
+            "home": {
+                "header": {
+                    "settings": "Nastavenia",
+                    "logOut": "Odhlasit sa"
+                },
+                "settings": {
+                    "delete": "Vymazat ucet",
+                    "back": "Spat na Home"
+                }
+            }
+        }
+    }
+}
