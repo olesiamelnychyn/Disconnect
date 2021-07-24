@@ -11,34 +11,34 @@
                 "password": "Heslo"
             },
             "logIn": {
-                "motive": "Nebolo by super poznat vsetkych?",
-                "usernameMessage": "E-mail je username",
-                "toSignUp": "Nemas ucet?"
+                "motive": "Nebolo by super poznať všetkých na svete?",
+                "usernameMessage": "E-mail je tvoj username",
+                "toSignUp": "Nemáš účet?"
             },
             "signUp": {
-                "verification": "Vas verifikacny email bol odoslany. Teraz budete presmerovane na prihlasovaciu stranku.",
-                "tip": "Vypln udaje pre registraciu",
+                "verification": "Váš verifikačný email bol odoslaný. Teraz budete presmerovaný na prihlasovaciu stránku.",
+                "tip": "Vyplň registračné údaje",
                 "firstName": "Meno",
                 "lastName": "Priezvisko",
                 "gender": {
                     "gender": "Pohlavie",
-                    "male": "Muz",
-                    "female": "Zena",
-                    "other": "Ine"
+                    "male": "Muž",
+                    "female": "Žena",
+                    "other": "Iné"
                 },
-                "back": "Spat na prihlasovanie",
-                "passwordMessage": "Heslo musi obsahovat minimalne osem znakov, aspon jedne jedne belke pismeno, jedne male pismeno, jedne cislo a jeden specialny znak"
+                "back": "Späť na prihlasovanie",
+                "passwordMessage": "Heslo musí obsahovať minimálne osem znakov, aspoň jedno veľké a jedno malé písmeno, jedno číslo a jeden špeciálny znak"
             }
         },
         "Auth": {
             "home": {
                 "header": {
                     "settings": "Nastavenia",
-                    "logOut": "Odhlasit sa"
+                    "logOut": "Odhlásiť sa"
                 },
                 "settings": {
-                    "delete": "Vymazat ucet",
-                    "back": "Spat na Home"
+                    "delete": "Vymazať účet",
+                    "back": "Späť na Home"
                 }
             }
         }
